@@ -60,7 +60,7 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <a href="#"
+                <a href="#" onclick="event.preventDefault(); window.showToast('My Resume is currently being updated. Coming soon!');"
                     class="bg-[#111111] dark:bg-white text-white dark:text-black px-4 py-2 rounded-lg text-[13px] font-bold shadow-sm hover:scale-[1.02] transition-transform flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -68,7 +68,7 @@
                     </svg>
                     View Resume
                 </a>
-                <a href="#"
+                <a href="mailto:jasolingianssen@gmail.com"
                     class="bg-white dark:bg-[#1a1a1a] text-gray-800 dark:text-gray-300 px-4 py-2 rounded-lg text-[13px] font-bold border border-gray-200 dark:border-[#2a2a2a] shadow-sm hover:scale-[1.02] transition-transform flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
