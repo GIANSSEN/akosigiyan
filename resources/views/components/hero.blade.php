@@ -86,10 +86,17 @@
             style="position: relative; width: 56px; height: 30px; border-radius: 999px; border: 1.5px solid #d1d5db; background: #f3f4f6; outline: none; cursor: pointer; transition: background 0.4s, border-color 0.4s; flex-shrink: 0; display: flex; align-items: center;">
 
             <!-- Sun icon (left) -->
-            <span style="position: absolute; left: 7px; top: 50%; transform: translateY(-50%); pointer-events: none; display: flex; align-items: center;">
-                <svg id="toggle-sun" width="14" height="14" viewBox="0 0 20 20" fill="#f59e0b" style="transition: opacity 0.3s;">
-                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.364a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.415l-.707-.707a1 1 0 010-1.415zM17 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zm-2.364 4.22a1 1 0 010 1.415l-.707.707a1 1 0 01-1.415-1.414l.707-.707a1 1 0 011.415 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.22-2.364a1 1 0 010-1.415l.707-.707a1 1 0 011.414 1.415l-.707.707a1 1 0 01-1.415 0zM4 10a1 1 0 01-1 1H2a1 1 0 110-2h1a1 1 0 011 1zm2.364-4.22a1 1 0 011.415 0l-.707-.707a1 1 0 01-1.414-1.415l.707.707a1 1 0 010 1.415z" clip-rule="evenodd"/>
-                    <path fill-rule="evenodd" d="M10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"/>
+            <span style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); pointer-events: none; display: flex; align-items: center; justify-content: center; width: 14px; height: 14px;">
+                <svg id="toggle-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: opacity 0.3s;">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                 </svg>
             </span>
 
