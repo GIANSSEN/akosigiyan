@@ -138,10 +138,10 @@ export default function HeroNew() {
                 {/* ── Avatar + Identity row — EXACT match to reference layout ── */}
                 <motion.div
                     variants={item}
-                    className="flex items-center gap-3 sm:gap-6 md:gap-7 mb-7 sm:mb-9"
+                    className="flex items-center gap-3.5 sm:gap-6 md:gap-7 mb-7 sm:mb-9"
                 >
-                    {/* Responsive Avatar Circle */}
-                    <div className="relative shrink-0 w-[92px] h-[92px] min-[360px]:w-[104px] min-[360px]:h-[104px] min-[420px]:w-[118px] min-[420px]:h-[118px] sm:w-[150px] sm:h-[150px] md:w-[170px] md:h-[170px] rounded-full border-[2.5px] sm:border-[3px] border-black dark:border-white p-[2px] sm:p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm">
+                    {/* Enlarged Responsive Avatar Circle */}
+                    <div className="relative shrink-0 w-[110px] h-[110px] min-[360px]:w-[118px] min-[360px]:h-[118px] min-[400px]:w-[130px] min-[400px]:h-[130px] sm:w-[155px] sm:h-[155px] md:w-[175px] md:h-[175px] rounded-full border-[2.5px] sm:border-[3px] border-black dark:border-white p-[2.5px] sm:p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm">
                         <div className="w-full h-full rounded-full overflow-hidden">
                             <PixelTransition
                                 firstContent={
@@ -186,10 +186,15 @@ export default function HeroNew() {
                     {/* Name + Verified Badge on 1 SINGLE LINE + Social Icons underneath */}
                     <div className="flex flex-col justify-center min-w-0 flex-1 overflow-visible">
                         <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap whitespace-nowrap overflow-visible">
-                            <h1 className="text-[17px] min-[360px]:text-[19px] min-[420px]:text-[22px] sm:text-[30px] md:text-[36px] font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap shrink-0">
+                            <h1
+                                className="font-sans font-bold text-gray-900 dark:text-white leading-none whitespace-nowrap shrink-0 text-[18px] min-[360px]:text-[20px] min-[400px]:text-[23px] sm:text-[30px] md:text-[36px]"
+                                style={{
+                                    letterSpacing: '-0.038em',
+                                }}
+                            >
                                 Gianssen Jasolin
                             </h1>
-                            <VerifiedBadge className="w-[16px] h-[16px] min-[360px]:w-[18px] min-[360px]:h-[18px] sm:w-[24px] sm:h-[24px] md:w-[28px] md:h-[28px] shrink-0" />
+                            <VerifiedBadge className="w-[17px] h-[17px] min-[360px]:w-[19px] min-[360px]:h-[19px] sm:w-[25px] sm:h-[25px] md:w-[28px] md:h-[28px] shrink-0" />
                         </div>
 
                         {/* Social Icons row */}
