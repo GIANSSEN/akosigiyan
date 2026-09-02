@@ -67,7 +67,7 @@ export default function GithubActivity() {
 
     return (
         <section id="github" className="py-12 scroll-mt-20">
-            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
                 <ScrollReveal>
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <h2 className="font-serif text-[26px] sm:text-[30px] font-normal text-gray-900 dark:text-white">

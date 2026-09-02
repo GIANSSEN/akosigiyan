@@ -148,7 +148,7 @@ export default function WorkTogether() {
 
     return (
         <section id="contact" className="py-14 sm:py-16 scroll-mt-20">
-            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
 
                 <AnimatedHeading
                     text="Let's work together."

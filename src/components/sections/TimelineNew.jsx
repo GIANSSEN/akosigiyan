@@ -8,7 +8,7 @@ export default function TimelineNew() {
 
     return (
         <section id="experience" className="py-12 scroll-mt-20">
-            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
 
                 <ScrollReveal>
                     <div className="flex items-baseline justify-between mb-7">

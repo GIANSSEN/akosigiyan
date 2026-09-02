@@ -13,7 +13,7 @@ export default function FooterNew() {
 
     return (
         <footer className="py-10">
-            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
                 <motion.div
                     initial={reduceMotion ? {} : { opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}

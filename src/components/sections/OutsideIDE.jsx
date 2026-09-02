@@ -30,7 +30,7 @@ export default function OutsideIDE() {
 
     return (
         <section className="py-12 scroll-mt-20">
-            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
 
                 <ScrollReveal>
                     <h2 className="font-serif text-[26px] sm:text-[28px] font-normal text-gray-900 dark:text-white mb-7">

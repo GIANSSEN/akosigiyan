@@ -69,7 +69,7 @@ export default function Navbar() {
                         : 'bg-white/80 dark:bg-[#0a0a0a]/80 border-b border-gray-200/40 dark:border-white/[0.04]'
                     } backdrop-blur-md`}
             >
-                <nav className="max-w-[820px] mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
+                <nav className="max-w-[880px] mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
 
                     {/* ── GGJ Monogram Logo ── */}
                     <a
