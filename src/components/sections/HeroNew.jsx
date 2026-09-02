@@ -138,14 +138,14 @@ export default function HeroNew() {
                 {/* ── Avatar + Identity row — Exactly like reference format ── */}
                 <motion.div
                     variants={item}
-                    className="flex items-center gap-4 sm:gap-6 mb-7 sm:mb-9"
+                    className="flex items-center gap-4 sm:gap-6 md:gap-7 mb-7 sm:mb-9"
                 >
-                    {/* Avatar Circle with thin border */}
+                    {/* Enlarged Avatar Circle with crisp border */}
                     <div
-                        className="relative shrink-0 rounded-full border-2 border-black dark:border-white p-[2px] bg-white dark:bg-[#0a0a0a] shadow-sm"
+                        className="relative shrink-0 rounded-full border-2 sm:border-[2.5px] border-black dark:border-white p-[2.5px] bg-white dark:bg-[#0a0a0a] shadow-sm"
                         style={{
-                            width:  'clamp(84px, 20vw, 116px)',
-                            height: 'clamp(84px, 20vw, 116px)',
+                            width:  'clamp(100px, 21vw, 146px)',
+                            height: 'clamp(100px, 21vw, 146px)',
                         }}
                     >
                         <div className="w-full h-full rounded-full overflow-hidden">
@@ -157,7 +157,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.12)',
+                                            transform: 'scale(1.14)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -170,7 +170,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.12)',
+                                            transform: 'scale(1.14)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -190,17 +190,17 @@ export default function HeroNew() {
                     </div>
 
                     {/* Name + Verified Badge on 1 SINGLE LINE, Social icons below */}
-                    <div className="min-w-0 flex flex-col justify-center">
-                        <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap mb-2">
+                    <div className="min-w-0 flex-1 flex flex-col justify-center">
+                        <div className="flex items-center gap-2 sm:gap-2.5 flex-nowrap whitespace-nowrap mb-2">
                             <h1
-                                className="font-sans font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap"
+                                className="font-sans font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap shrink-0"
                                 style={{
-                                    fontSize: 'clamp(1.35rem, 4.6vw, 2.35rem)',
+                                    fontSize: 'clamp(1.22rem, 4.4vw, 2.45rem)',
                                 }}
                             >
                                 Gianssen Jasolin
                             </h1>
-                            <VerifiedBadge className="w-[19px] h-[19px] min-[360px]:w-[21px] min-[360px]:h-[21px] sm:w-[26px] sm:h-[26px]" />
+                            <VerifiedBadge className="w-[19px] h-[19px] min-[360px]:w-[21px] min-[360px]:h-[21px] sm:w-[26px] sm:h-[26px] md:w-[28px] md:h-[28px]" />
                         </div>
 
                         {/* Social Icons row — filled style under name */}
