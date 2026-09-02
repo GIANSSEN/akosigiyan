@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Gianssen G. Jasolin — AI / Full-Stack Developer & BSIT Student based in Metro Manila, Philippines. Portfolio showcasing projects, experience, and skills." />
+    <meta name="keywords" content="Gianssen Jasolin, portfolio, full-stack developer, AI engineer, React, Vite, Metro Manila" />
+    <meta name="author" content="Gianssen G. Jasolin" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="akosigiyan — Gianssen G. Jasolin" />
+    <meta property="og:description" content="AI / Full-Stack Developer & BSIT Student. Portfolio showcasing modern web projects." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://akosigiyan.vercel.app" />
+    <meta property="og:image" content="https://akosigiyan.vercel.app/profile.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="akosigiyan — Gianssen G. Jasolin" />
+    <meta name="twitter:description" content="AI / Full-Stack Developer & BSIT Student. Portfolio showcasing modern web projects." />
+    <meta name="twitter:image" content="https://akosigiyan.vercel.app/profile.png" />
+
+    <link rel="canonical" href="https://akosigiyan.vercel.app" />
+    <title>akosigiyan — Gianssen G. Jasolin</title>
+
+    <!-- Google Fonts: Inter + EB Garamond (resume) + Instrument Serif (editorial headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Dark mode flash prevention: run before React mounts -->
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-[#0a0a0a] dark:text-gray-100 antialiased transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

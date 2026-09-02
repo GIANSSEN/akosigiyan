@@ -1,0 +1,64 @@
+.stack-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 600px;
+  /* Prevent text selection during swipe */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.card-rotate {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.card-rotate:active {
+  cursor: grabbing;
+}
+
+.card-rotate-disabled {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.card {
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Mobile swipe hint label */
+.stack-swipe-hint {
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(150, 150, 150, 0.8);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.03em;
+}
