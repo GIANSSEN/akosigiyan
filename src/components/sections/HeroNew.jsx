@@ -17,8 +17,8 @@ const ROLES = [
 
 function useTypewriter(words, { typingSpeed = 80, deletingSpeed = 40, pause = 1800 } = {}) {
     const [displayed, setDisplayed] = useState('');
-    const [wordIdx, setWordIdx]     = useState(0);
-    const [phase, setPhase]         = useState('typing');
+    const [wordIdx, setWordIdx] = useState(0);
+    const [phase, setPhase] = useState('typing');
 
     useEffect(() => {
         const word = words[wordIdx];
@@ -98,9 +98,9 @@ export default function HeroNew() {
     const typedRole = useTypewriter(ROLES);
 
     const socials = [
-        { icon: <GithubIcon />,   href: socialLinks[1]?.href || 'https://github.com/Gianssen', label: 'GitHub' },
+        { icon: <GithubIcon />, href: socialLinks[1]?.href || 'https://github.com/Gianssen', label: 'GitHub' },
         { icon: <LinkedinIcon />, href: socialLinks[0]?.href || 'https://www.linkedin.com/in/gianssen-jasolin/', label: 'LinkedIn' },
-        { icon: <MailIcon />,     href: `mailto:${contactInfo.email}`, label: 'Email' },
+        { icon: <MailIcon />, href: `mailto:${contactInfo.email}`, label: 'Email' },
     ];
 
     const container = {

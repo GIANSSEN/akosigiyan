@@ -65,6 +65,16 @@ export const allTech = [
 
 export const projects = [
     {
+        title: 'Galilei Global',
+        role: 'Technical SEO & Deployment Specialist',
+        description: 'Corporate landing page for an international trading company.',
+        url: 'galileiglobal.com',
+        link: 'https://galileiglobal.com/',
+        linkLabel: 'VISIT SITE',
+        image: '/projects/galilei-global.png',
+        tech: ['html5', 'css3', 'javascript'],
+    },
+    {
         title: "CJ's Minimart POS System",
         role: 'Lead Full-Stack Developer',
         description: 'A comprehensive retail management and POS system featuring real-time inventory tracking, bulk stock handling, and automated reporting.',
