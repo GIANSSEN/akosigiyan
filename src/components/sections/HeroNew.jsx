@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 import { socialLinks, contactInfo } from '@/data/portfolioData';
 import PixelTransition from '@/components/ui/PixelTransition';
@@ -53,25 +53,41 @@ function useTypewriter(words, { typingSpeed = 80, deletingSpeed = 40, pause = 18
     return displayed;
 }
 
-/* ── Verified badge ──────────────────────────────────────────────── */
-const VerifiedBadge = ({ className = "w-[22px] h-[22px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px]" }) => (
+/* ── Twitter/X Verified Badge — Scalloped Blue Star ─────────────── */
+const VerifiedBadge = ({ className = "w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]" }) => (
     <svg
         className={`shrink-0 ${className}`}
         viewBox="0 0 24 24"
         fill="none"
-        title="Verified"
+        aria-label="Verified"
     >
         <path
-            d="M12 2L13.8 5.4L17.6 4.4L17.2 8.2L20.8 9.4L18.6 12.4L20.8 15.4L17.2 16.6L17.6 20.4L13.8 19.4L12 22.8L10.2 19.4L6.4 20.4L6.8 16.6L3.2 15.4L5.4 12.4L3.2 9.4L6.8 8.2L6.4 4.4L10.2 5.4L12 2Z"
-            fill="#3b82f6"
+            d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.79-4-4-4-.495 0-.965.084-1.4.238C14.55 2.475 13.18 1.6 11.6 1.6s-2.95.875-3.6 2.148c-.435-.154-.905-.238-1.4-.238-2.21 0-4 1.79-4 4 0 .495.084.965.238 1.4C1.575 9.55.7 10.92.7 12.5s.875 2.95 2.148 3.6c-.154.435-.238.905-.238 1.4 0 2.21 1.79 4 4 4 .495 0 .965-.084 1.4-.238.65 1.273 2.02 2.148 3.6 2.148s2.95-.875 3.6-2.148c.435.154.905.238 1.4.238 2.21 0 4-1.79 4-4 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6z"
+            fill="#1d9bf0"
         />
         <path
-            d="M9.5 12.5L11 14L14.5 10.5"
-            stroke="white"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="M10.2 16.2l-3.6-3.6 1.4-1.4 2.2 2.2 5.6-5.6 1.4 1.4-7 7z"
+            fill="#ffffff"
         />
+    </svg>
+);
+
+/* ── Clean Filled Social Icons ───────────────────────────────────── */
+const GithubIcon = () => (
+    <svg className="w-[19px] h-[19px] sm:w-[21px] sm:h-[21px] fill-current" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+);
+
+const LinkedinIcon = () => (
+    <svg className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] fill-current" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+    </svg>
+);
+
+const MailIcon = () => (
+    <svg className="w-[19px] h-[19px] sm:w-[21px] sm:h-[21px] fill-current" viewBox="0 0 24 24">
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
     </svg>
 );
 
@@ -81,11 +97,10 @@ export default function HeroNew() {
     const reduceMotion = useReducedMotion();
     const typedRole = useTypewriter(ROLES);
 
-    // Only GitHub, LinkedIn, Email (IG and Facebook removed)
     const socials = [
-        { icon: <Github className="w-[17px] h-[17px] sm:w-[19px] sm:h-[19px]" />,   href: socialLinks[1]?.href || '#', label: 'GitHub',   color: '#24292e', darkColor: '#e5e7eb' },
-        { icon: <Linkedin className="w-[17px] h-[17px] sm:w-[19px] sm:h-[19px]" />, href: socialLinks[0]?.href || '#', label: 'LinkedIn', color: '#0A66C2', darkColor: '#60a5fa' },
-        { icon: <Mail className="w-[17px] h-[17px] sm:w-[19px] sm:h-[19px]" />,     href: `mailto:${contactInfo.email}`, label: 'Email',  color: '#EA4335', darkColor: '#fca5a5' },
+        { icon: <GithubIcon />,   href: socialLinks[1]?.href || 'https://github.com/Gianssen', label: 'GitHub' },
+        { icon: <LinkedinIcon />, href: socialLinks[0]?.href || 'https://www.linkedin.com/in/gianssen-jasolin/', label: 'LinkedIn' },
+        { icon: <MailIcon />,     href: `mailto:${contactInfo.email}`, label: 'Email' },
     ];
 
     const container = {
@@ -120,17 +135,17 @@ export default function HeroNew() {
                 initial="hidden"
                 animate="show"
             >
-                {/* ── Avatar + Identity row ─────────────────────────────── */}
+                {/* ── Avatar + Identity row — Exactly like reference format ── */}
                 <motion.div
                     variants={item}
-                    className="flex items-center gap-4 sm:gap-7 mb-7 sm:mb-9"
+                    className="flex items-center gap-4 sm:gap-6 mb-7 sm:mb-9"
                 >
-                    {/* Enlarged Avatar with black circular border & slightly zoomed photo */}
+                    {/* Avatar Circle with thin border */}
                     <div
-                        className="relative shrink-0 rounded-full border-2 sm:border-[2.5px] border-black dark:border-white p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm"
+                        className="relative shrink-0 rounded-full border-2 border-black dark:border-white p-[2px] bg-white dark:bg-[#0a0a0a] shadow-sm"
                         style={{
-                            width:  'clamp(120px, 26vw, 172px)',
-                            height: 'clamp(120px, 26vw, 172px)',
+                            width:  'clamp(84px, 20vw, 116px)',
+                            height: 'clamp(84px, 20vw, 116px)',
                         }}
                     >
                         <div className="w-full h-full rounded-full overflow-hidden">
@@ -142,7 +157,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.14)',
+                                            transform: 'scale(1.12)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -155,7 +170,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.14)',
+                                            transform: 'scale(1.12)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -174,17 +189,22 @@ export default function HeroNew() {
                         </div>
                     </div>
 
-                    {/* Name + Verified Badge in 1 SINGLE LINE + Social Icons */}
-                    <div className="min-w-0 flex-1 flex flex-col justify-center">
-                        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-nowrap whitespace-nowrap mb-1 sm:mb-2">
-                            <h1 className="font-sans text-[22px] min-[360px]:text-[25px] min-[400px]:text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap truncate">
+                    {/* Name + Verified Badge on 1 SINGLE LINE, Social icons below */}
+                    <div className="min-w-0 flex flex-col justify-center">
+                        <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap mb-2">
+                            <h1
+                                className="font-sans font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap"
+                                style={{
+                                    fontSize: 'clamp(1.35rem, 4.6vw, 2.35rem)',
+                                }}
+                            >
                                 Gianssen Jasolin
                             </h1>
-                            <VerifiedBadge />
+                            <VerifiedBadge className="w-[19px] h-[19px] min-[360px]:w-[21px] min-[360px]:h-[21px] sm:w-[26px] sm:h-[26px]" />
                         </div>
 
-                        {/* Social Icons row */}
-                        <div className="flex items-center gap-1.5 sm:gap-2 mt-1">
+                        {/* Social Icons row — filled style under name */}
+                        <div className="flex items-center gap-3.5 sm:gap-4 text-gray-600 dark:text-gray-400">
                             {socials.map((s) => (
                                 <a
                                     key={s.label}
@@ -192,7 +212,7 @@ export default function HeroNew() {
                                     target={s.href.startsWith('mailto:') ? '_self' : '_blank'}
                                     rel="noopener noreferrer"
                                     aria-label={s.label}
-                                    className="p-1.5 sm:p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.08] rounded-lg transition-all duration-150 outline-none"
+                                    className="hover:text-gray-900 dark:hover:text-white transition-colors duration-150 outline-none"
                                 >
                                     {s.icon}
                                 </a>
