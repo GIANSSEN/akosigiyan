@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, FileText } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 const LINKS = [
     { id: 'about',      label: 'About' },
@@ -13,7 +14,7 @@ const LINKS = [
 ];
 
 export default function Navbar() {
-    const { isDark, toggleTheme } = useTheme();
+    const { isDark } = useTheme();
     const [active, setActive] = useState('');
     const [hidden, setHidden] = useState(false);
     const [open, setOpen] = useState(false);
@@ -107,13 +108,9 @@ export default function Navbar() {
 
                 {/* Right controls */}
                 <div className="flex items-center gap-1 ml-1 sm:ml-2">
-                    <button
-                        onClick={toggleTheme}
-                        aria-label="Toggle dark mode"
-                        className="grid place-items-center w-8 h-8 rounded-full text-gray-500 hover:bg-black/5 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-white transition-colors"
-                    >
-                        {isDark ? <Sun size={16} /> : <Moon size={16} />}
-                    </button>
+                    <AnimatedThemeToggler
+                        className="w-8 h-8 text-gray-500 hover:bg-black/5 dark:text-gray-400 dark:hover:bg-white/10 transition-colors"
+                    />
 
                     <Link
                         to="/resume"

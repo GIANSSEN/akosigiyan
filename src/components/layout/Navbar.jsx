@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Sun, Moon, Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 /* 3 menu items as requested */
 const links = [
@@ -11,7 +12,7 @@ const links = [
 ];
 
 export default function Navbar() {
-    const { isDark, toggleTheme } = useTheme();
+    const { isDark } = useTheme();
     const [mobileOpen, setMobileOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('');
     const [scrolled, setScrolled] = useState(false);
@@ -110,50 +111,14 @@ export default function Navbar() {
                         {/* Divider */}
                         <span className="w-px h-4 bg-gray-200 dark:bg-white/10 mx-2 shrink-0" />
 
-                        {/* ── Theme toggle — Clean Icon Only ── */}
-                        <button
-                            onClick={toggleTheme}
-                            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                            aria-pressed={isDark}
-                            className="flex items-center justify-center p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 outline-none focus:outline-none active:scale-90 cursor-pointer"
-                        >
-                            <AnimatePresence mode="wait" initial={false}>
-                                <motion.span
-                                    key={isDark ? 'sun' : 'moon'}
-                                    initial={reduceMotion ? {} : { opacity: 0, rotate: -60, scale: 0.6 }}
-                                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                                    exit={reduceMotion ? {} : { opacity: 0, rotate: 60, scale: 0.6 }}
-                                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                                    className="flex items-center justify-center"
-                                >
-                                    {isDark ? <Sun size={17} strokeWidth={2} /> : <Moon size={17} strokeWidth={2} />}
-                                </motion.span>
-                            </AnimatePresence>
-                        </button>
+                        {/* ── Theme toggle — Animated View Transitions ── */}
+                        <AnimatedThemeToggler className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" />
                     </div>
 
                     {/* ── Mobile controls ── */}
                     <div className="flex sm:hidden items-center gap-1.5">
                         {/* Mobile Theme Toggle */}
-                        <button
-                            onClick={toggleTheme}
-                            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                            aria-pressed={isDark}
-                            className="flex items-center justify-center p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 outline-none focus:outline-none active:scale-90"
-                        >
-                            <AnimatePresence mode="wait" initial={false}>
-                                <motion.span
-                                    key={isDark ? 'sun-m' : 'moon-m'}
-                                    initial={reduceMotion ? {} : { opacity: 0, rotate: -60, scale: 0.6 }}
-                                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                                    exit={reduceMotion ? {} : { opacity: 0, rotate: 60, scale: 0.6 }}
-                                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                                    className="flex items-center justify-center"
-                                >
-                                    {isDark ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
-                                </motion.span>
-                            </AnimatePresence>
-                        </button>
+                        <AnimatedThemeToggler className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" />
 
                         {/* Hamburger */}
                         <button

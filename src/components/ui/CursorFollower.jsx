@@ -63,8 +63,14 @@ export default function CursorFollower() {
             }
         };
 
-        const onMouseDown = () => ring.classList.add('cursor-ring--click');
-        const onMouseUp = () => ring.classList.remove('cursor-ring--click');
+        const onMouseDown = (e) => {
+            if (e.target.closest('[data-no-spark]')) return;
+            ring.classList.add('cursor-ring--click');
+        };
+        const onMouseUp = (e) => {
+            if (e.target.closest('[data-no-spark]')) return;
+            ring.classList.remove('cursor-ring--click');
+        };
 
         // Lerp loop for spring lag
         const lerp = (a, b, n) => (1 - n) * a + n * b;

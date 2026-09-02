@@ -84,6 +84,29 @@ textarea:focus-visible {
     transition: none !important;
 }
 
+/* ── View Transitions API — animated theme toggle ────────────────── */
+/* Disable the default cross-fade so our custom clip-path animation is sole effect */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+/* Old snapshot stays put behind the incoming clip-reveal */
+::view-transition-old(root) {
+    z-index: 1;
+}
+/* New snapshot sits on top and receives our JS-driven clip-path animation */
+::view-transition-new(root) {
+    z-index: 9999;
+}
+/* While a view-transition is active, suppress the global colour transition
+   so the animated clip-path is the ONLY visual effect (no colour bleed) */
+html:has(::view-transition) *,
+html:has(::view-transition) *::before,
+html:has(::view-transition) *::after {
+    transition: none !important;
+}
+
 /* ── Global responsive safeguards ─────────────────────────────────── */
 section {
     /* Prevent any section from causing horizontal scroll */

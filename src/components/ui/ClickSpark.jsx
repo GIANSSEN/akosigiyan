@@ -18,6 +18,10 @@ export default function ClickSpark({
         if (!container) return;
 
         function createSparks(e) {
+            // ── Skip sparks on the theme toggle button to avoid lag
+            //    during the View Transition animation ────────────────
+            if (e.target.closest('[data-no-spark]')) return;
+
             const color =
                 sparkColor ??
                 (document.documentElement.classList.contains('dark') ? '#a78bfa' : '#6366f1');
