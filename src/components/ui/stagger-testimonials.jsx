@@ -49,17 +49,16 @@ const testimonials = [
 ];
 
 /* ── Single Card ─────────────────────────────────────────────────── */
-const TestimonialCard = ({ position, testimonial, handleMove, cardSize }) => {
+const TestimonialCard = ({ position, testimonial, handleMove, cardW, cardH }) => {
   const isCenter = position === 0;
 
-  // Only render the center + 1 adjacent on each side (3 visible at a time)
+  // Only render center + 1 on each side
   if (Math.abs(position) > 1) return null;
 
-  const cornerSize = Math.round(cardSize * 0.12);
-  // spacing between cards is tighter so they fit on small screens
-  const xOffset = (cardSize * 0.72) * position;
-  const yOffset = isCenter ? -20 : position % 2 ? 8 : -8;
-  const rotation = isCenter ? 0 : position % 2 ? 2.5 : -2.5;
+  const cornerSize = Math.round(cardW * 0.1);
+  const xOffset = (cardW * 0.72) * position;
+  const yOffset = isCenter ? -16 : position % 2 ? 10 : -10;
+  const rotation = isCenter ? 0 : position % 2 ? 3 : -3;
 
   return (
     <div
@@ -67,50 +66,64 @@ const TestimonialCard = ({ position, testimonial, handleMove, cardSize }) => {
       className={cn(
         "absolute left-1/2 top-1/2 cursor-pointer border-2 transition-all duration-500 ease-in-out select-none",
         isCenter
-          ? "z-10 bg-indigo-600 border-indigo-600 shadow-xl"
-          : "z-0 bg-white dark:bg-[#141414] border-gray-200 dark:border-white/10"
+          ? "z-10 bg-indigo-600 border-indigo-600 shadow-2xl"
+          : "z-0 bg-white dark:bg-[#141414] border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20"
       )}
       style={{
-        width: cardSize,
-        height: cardSize,
+        width: cardW,
+        height: cardH,
         clipPath: `polygon(${cornerSize}px 0%, calc(100% - ${cornerSize}px) 0%, 100% ${cornerSize}px, 100% 100%, calc(100% - ${cornerSize}px) 100%, ${cornerSize}px 100%, 0 100%, 0 0)`,
         transform: `translate(-50%, -50%) translateX(${xOffset}px) translateY(${yOffset}px) rotate(${rotation}deg)`,
-        opacity: isCenter ? 1 : 0.75,
-        boxShadow: isCenter ? '0px 8px 24px rgba(99,102,241,0.3)' : 'none',
+        opacity: isCenter ? 1 : 0.72,
+        boxShadow: isCenter ? '0px 14px 36px -6px rgba(99,102,241,0.38)' : 'none',
       }}
     >
-      {/* corner fold accent */}
+      {/* Corner fold accent */}
       <span
-        className="absolute block origin-top-right rotate-45 bg-gray-300 dark:bg-white/20"
+        className="absolute block origin-top-right rotate-45 bg-gray-300 dark:bg-white/20 pointer-events-none"
         style={{ right: -2, top: cornerSize - 2, width: cornerSize * 1.414, height: 2 }}
       />
 
-      {/* card content */}
-      <div className="p-3.5 h-full flex flex-col">
-        <img
-          src={testimonial.imgSrc}
-          alt={testimonial.by}
-          className="mb-2 h-9 w-8 rounded-sm object-cover object-top shrink-0"
-        />
-        <p className={cn(
-          "text-[11px] font-medium leading-snug line-clamp-5 flex-1",
-          isCenter ? "text-white" : "text-gray-800 dark:text-gray-200"
+      {/* Card content */}
+      <div className="p-4 sm:p-5 h-full flex flex-col justify-between">
+        <div>
+          <div className="flex items-center gap-3 mb-3">
+            <img
+              src={testimonial.imgSrc}
+              alt={testimonial.by}
+              className="h-10 w-9 sm:h-11 sm:w-10 rounded-md object-cover object-top shrink-0 border border-white/20"
+            />
+            <div className="min-w-0 flex-1">
+              <p className={cn(
+                "text-[12px] sm:text-[13px] font-bold truncate leading-tight",
+                isCenter ? "text-white" : "text-gray-900 dark:text-gray-100"
+              )}>
+                {testimonial.by}
+              </p>
+              <p className={cn(
+                "text-[10px] sm:text-[11px] truncate leading-tight mt-0.5",
+                isCenter ? "text-indigo-200" : "text-gray-500 dark:text-gray-400"
+              )}>
+                {testimonial.role}
+              </p>
+            </div>
+          </div>
+
+          <p className={cn(
+            "text-[12px] sm:text-[13.5px] font-normal leading-relaxed line-clamp-4 sm:line-clamp-5",
+            isCenter ? "text-indigo-50" : "text-gray-700 dark:text-gray-200"
+          )}>
+            "{testimonial.testimonial}"
+          </p>
+        </div>
+
+        {/* Bottom subtle brand indicator */}
+        <div className={cn(
+          "pt-2 mt-2 border-t flex items-center justify-between text-[10px] font-mono",
+          isCenter ? "border-white/15 text-indigo-200" : "border-gray-100 dark:border-white/[0.06] text-gray-400 dark:text-gray-500"
         )}>
-          "{testimonial.testimonial}"
-        </p>
-        <div className="mt-2 pt-2 border-t border-white/20">
-          <p className={cn(
-            "text-[9.5px] font-bold truncate leading-tight",
-            isCenter ? "text-indigo-100" : "text-gray-700 dark:text-gray-300"
-          )}>
-            {testimonial.by}
-          </p>
-          <p className={cn(
-            "text-[8.5px] truncate leading-tight mt-0.5",
-            isCenter ? "text-indigo-200" : "text-gray-500 dark:text-gray-400"
-          )}>
-            {testimonial.role}
-          </p>
+          <span>Recommendation</span>
+          <span>5.0 ★</span>
         </div>
       </div>
     </div>
@@ -119,7 +132,7 @@ const TestimonialCard = ({ position, testimonial, handleMove, cardSize }) => {
 
 /* ── Main Component ──────────────────────────────────────────────── */
 export const StaggerTestimonials = () => {
-  const [cardSize, setCardSize] = useState(200);
+  const [dimensions, setDimensions] = useState({ w: 280, h: 250 });
   const [testimonialsList, setTestimonialsList] = useState(testimonials);
   const touchStartX = useRef(null);
 
@@ -141,15 +154,21 @@ export const StaggerTestimonials = () => {
     setTestimonialsList(newList);
   };
 
-  // Responsive card size
+  // Fluid responsive card dimensions
   useEffect(() => {
     const updateSize = () => {
-      const w = window.innerWidth;
-      if (w < 380)       setCardSize(148);
-      else if (w < 480)  setCardSize(165);
-      else if (w < 640)  setCardSize(180);
-      else if (w < 768)  setCardSize(200);
-      else               setCardSize(215);
+      const screenW = window.innerWidth;
+      if (screenW < 380) {
+        setDimensions({ w: 200, h: 225 });
+      } else if (screenW < 480) {
+        setDimensions({ w: 230, h: 235 });
+      } else if (screenW < 640) {
+        setDimensions({ w: 260, h: 245 });
+      } else if (screenW < 768) {
+        setDimensions({ w: 285, h: 255 });
+      } else {
+        setDimensions({ w: 310, h: 265 });
+      }
     };
     updateSize();
     window.addEventListener('resize', updateSize);
@@ -165,8 +184,8 @@ export const StaggerTestimonials = () => {
     touchStartX.current = null;
   };
 
-  // Container height = cardSize + padding for buttons below
-  const containerH = cardSize + 72;
+  // Container height = card height + navigation buttons
+  const containerH = dimensions.h + 84;
 
   return (
     <div
@@ -175,8 +194,8 @@ export const StaggerTestimonials = () => {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {/* Card stack — clipped so nothing bleeds outside */}
-      <div className="absolute inset-x-0 top-0 overflow-hidden" style={{ height: cardSize + 28 }}>
+      {/* Card stack — clipped so nothing overflows horizontally */}
+      <div className="absolute inset-x-0 top-0 overflow-hidden" style={{ height: dimensions.h + 36 }}>
         {testimonialsList.map((testimonial, index) => {
           const position =
             testimonialsList.length % 2
@@ -188,27 +207,28 @@ export const StaggerTestimonials = () => {
               testimonial={testimonial}
               handleMove={handleMove}
               position={position}
-              cardSize={cardSize}
+              cardW={dimensions.w}
+              cardH={dimensions.h}
             />
           );
         })}
       </div>
 
       {/* Nav buttons pinned below cards */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20">
         <button
           onClick={() => handleMove(-1)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-[#181818] text-gray-700 dark:text-gray-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-95 shadow-xs"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#181818] text-gray-700 dark:text-gray-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 dark:hover:border-indigo-600 transition-all duration-200 active:scale-90 shadow-sm cursor-pointer"
           aria-label="Previous testimonial"
         >
-          <ChevronLeft size={17} />
+          <ChevronLeft size={19} />
         </button>
         <button
           onClick={() => handleMove(1)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-[#181818] text-gray-700 dark:text-gray-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-95 shadow-xs"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#181818] text-gray-700 dark:text-gray-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 dark:hover:border-indigo-600 transition-all duration-200 active:scale-90 shadow-sm cursor-pointer"
           aria-label="Next testimonial"
         >
-          <ChevronRight size={17} />
+          <ChevronRight size={19} />
         </button>
       </div>
     </div>
