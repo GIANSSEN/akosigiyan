@@ -140,8 +140,8 @@ export default function HeroNew() {
                     variants={item}
                     className="flex items-center gap-3.5 sm:gap-6 md:gap-7 mb-7 sm:mb-9"
                 >
-                    {/* Enlarged Responsive Avatar Circle */}
-                    <div className="relative shrink-0 w-[110px] h-[110px] min-[360px]:w-[118px] min-[360px]:h-[118px] min-[400px]:w-[130px] min-[400px]:h-[130px] sm:w-[155px] sm:h-[155px] md:w-[175px] md:h-[175px] rounded-full border-[2.5px] sm:border-[3px] border-black dark:border-white p-[2.5px] sm:p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm">
+                    {/* Prominent Responsive Avatar Circle */}
+                    <div className="relative shrink-0 w-[105px] h-[105px] min-[360px]:w-[115px] min-[360px]:h-[115px] min-[400px]:w-[126px] min-[400px]:h-[126px] sm:w-[158px] sm:h-[158px] md:w-[180px] md:h-[180px] rounded-full border-[2.5px] sm:border-[3px] border-black dark:border-white p-[2px] sm:p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm">
                         <div className="w-full h-full rounded-full overflow-hidden">
                             <PixelTransition
                                 firstContent={
@@ -183,22 +183,22 @@ export default function HeroNew() {
                         </div>
                     </div>
 
-                    {/* Name + Verified Badge on 1 SINGLE LINE + Social Icons underneath */}
-                    <div className="flex flex-col justify-center min-w-0 flex-1 overflow-visible">
-                        <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap whitespace-nowrap overflow-visible">
+                    {/* Name (thinned font weight) + Verified Badge + Social Icons — zero overlap */}
+                    <div className="flex flex-col justify-center min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap min-w-0">
                             <h1
-                                className="font-sans font-bold text-gray-900 dark:text-white leading-none whitespace-nowrap shrink-0 text-[18px] min-[360px]:text-[20px] min-[400px]:text-[23px] sm:text-[30px] md:text-[36px]"
+                                className="font-serif font-normal sm:font-medium text-gray-900 dark:text-white leading-tight shrink min-w-0 text-[16px] min-[360px]:text-[17.5px] min-[400px]:text-[19.5px] sm:text-[27px] md:text-[34px]"
                                 style={{
-                                    letterSpacing: '-0.038em',
+                                    letterSpacing: '-0.015em',
                                 }}
                             >
                                 Gianssen Jasolin
                             </h1>
-                            <VerifiedBadge className="w-[17px] h-[17px] min-[360px]:w-[19px] min-[360px]:h-[19px] sm:w-[25px] sm:h-[25px] md:w-[28px] md:h-[28px] shrink-0" />
+                            <VerifiedBadge className="w-[14px] h-[14px] min-[360px]:w-[16px] min-[360px]:h-[16px] sm:w-[22px] sm:h-[22px] md:w-[26px] md:h-[26px] shrink-0" />
                         </div>
 
                         {/* Social Icons row */}
-                        <div className="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-2.5 text-gray-700 dark:text-gray-300">
+                        <div className="flex items-center gap-2.5 sm:gap-4 mt-2 sm:mt-2.5 text-gray-700 dark:text-gray-300">
                             {socials.map((s) => (
                                 <a
                                     key={s.label}

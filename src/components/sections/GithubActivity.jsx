@@ -69,23 +69,25 @@ export default function GithubActivity() {
         <section id="github" className="py-12 scroll-mt-20">
             <div className="max-w-[780px] mx-auto px-5 sm:px-8">
                 <ScrollReveal>
-                    <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 mb-5">
                         <h2 className="font-serif text-[26px] sm:text-[30px] font-normal text-gray-900 dark:text-white">
                             GitHub Activity
                         </h2>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-between sm:justify-end gap-3 flex-wrap">
                             <span className="text-[12px] font-medium text-gray-400 dark:text-gray-500 tabular-nums">
                                 {total} contributions
                             </span>
-                            <div className="flex items-center gap-1">
+                            {/* Year Selector: Box UI instead of circle */}
+                            <div className="inline-flex p-1 rounded-xl bg-gray-100 dark:bg-white/[0.05] border border-gray-200/80 dark:border-white/[0.08] gap-1">
                                 {YEARS.map(y => (
                                     <button
                                         key={y}
                                         onClick={() => setYear(y)}
-                                        className={`px-2.5 py-1.5 rounded-full text-[12px] font-bold tabular-nums transition-colors focus-ring ${y === year
-                                                ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
-                                                : 'text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white'
-                                            }`}
+                                        className={`px-2.5 sm:px-3 py-1 rounded-lg text-[11.5px] sm:text-[12px] font-semibold tabular-nums transition-all duration-200 cursor-pointer ${
+                                            y === year
+                                                ? 'bg-white dark:bg-[#1c1c1c] text-gray-900 dark:text-white shadow-xs font-bold border border-gray-200/80 dark:border-white/10'
+                                                : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5 border border-transparent'
+                                        }`}
                                     >
                                         {y}
                                     </button>

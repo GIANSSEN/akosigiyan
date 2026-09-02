@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => {
     process.env.GEMINI_API_KEY = env.GEMINI_API_KEY || process.env.GEMINI_API_KEY;
 
     return {
+        server: {
+            allowedHosts: true,
+        },
         plugins: [
             react(),
             tailwindcss(),

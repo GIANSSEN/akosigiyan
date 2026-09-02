@@ -20,17 +20,17 @@ export default function FooterNew() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <div className="border-t border-dashed border-gray-200 dark:border-white/[0.07] mb-8" />
+                    <div className="border-t border-dashed border-gray-200 dark:border-white/[0.07] mb-6 sm:mb-8" />
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-5">
 
                         {/* Left — quote + name + socials */}
-                        <div className="min-w-0">
-                            <p className="text-[12.5px] italic text-gray-400 dark:text-gray-500 mb-2">
+                        <div className="min-w-0 flex-1">
+                            <p className="text-[12px] sm:text-[12.5px] italic text-gray-400 dark:text-gray-500 mb-2 leading-relaxed">
                                 {footerQuote || 'Repetition until it becomes technique.'}
                             </p>
 
-                            <div className="flex items-center gap-2 text-[12.5px] flex-wrap">
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-[11.5px] sm:text-[12.5px] flex-wrap">
                                 <span className="font-semibold text-gray-900 dark:text-white">
                                     Gianssen Jasolin
                                 </span>
@@ -45,7 +45,7 @@ export default function FooterNew() {
                             </div>
 
                             {/* Social links (GitHub, LinkedIn, Email) */}
-                            <div className="flex items-center gap-3 mt-3">
+                            <div className="flex items-center gap-3.5 mt-3">
                                 {socials.map(s => (
                                     <motion.a
                                         key={s.label}
@@ -53,8 +53,8 @@ export default function FooterNew() {
                                         target={s.href.startsWith('http') ? '_blank' : undefined}
                                         rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                                         aria-label={s.label}
-                                        className="text-gray-400 dark:text-gray-500 no-underline flex items-center focus-ring"
-                                        whileHover={reduceMotion ? {} : { y: -2, scale: 1.2, color: s.color }}
+                                        className="text-gray-400 dark:text-gray-500 no-underline flex items-center focus-ring p-1 -m-1"
+                                        whileHover={reduceMotion ? {} : { y: -2, scale: 1.15, color: s.color }}
                                         transition={{ type: 'spring', stiffness: 500, damping: 12 }}
                                     >
                                         {s.icon}
@@ -64,20 +64,20 @@ export default function FooterNew() {
                         </div>
 
                         {/* Right — recommender avatars */}
-                        <div className="flex items-center gap-3 shrink-0">
-                            <div className="flex items-center -space-x-2.5">
+                        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100 dark:border-white/[0.05] w-full sm:w-auto">
+                            <div className="flex items-center -space-x-2">
                                 {(recommenderAvatars || []).slice(0, 3).map((a, i) => (
                                     <img
                                         key={i}
                                         src={a.src}
                                         alt={a.alt}
                                         title={a.alt}
-                                        className="w-8 h-8 rounded-full ring-2 ring-white dark:ring-[#0a0a0a] object-cover grayscale"
+                                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full ring-2 ring-white dark:ring-[#0a0a0a] object-cover grayscale"
                                         onError={e => { e.target.style.display = 'none'; }}
                                     />
                                 ))}
                             </div>
-                            <span className="text-[12px] text-gray-400 dark:text-gray-500 leading-tight">
+                            <span className="text-[11.5px] sm:text-[12px] text-gray-400 dark:text-gray-500 leading-tight">
                                 Endorsed by<br />
                                 <span className="font-semibold text-gray-700 dark:text-gray-300">colleagues & clients</span>
                             </span>
