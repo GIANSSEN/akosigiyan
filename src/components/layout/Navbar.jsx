@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
-/* 3 menu items only as requested */
+/* 3 menu items as requested */
 const links = [
     { label: 'Projects',    href: '#projects' },
     { label: 'Experience',  href: '#experience' },
@@ -111,7 +111,7 @@ export default function Navbar() {
                         {/* Divider */}
                         <span className="w-px h-4 bg-gray-200 dark:bg-white/10 mx-2 shrink-0" />
 
-                        {/* ── Theme toggle — Clean Icon Only (No Circle/Border) ── */}
+                        {/* ── Theme toggle — Clean Icon Only ── */}
                         <button
                             onClick={toggleTheme}
                             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -135,7 +135,7 @@ export default function Navbar() {
 
                     {/* ── Mobile controls ── */}
                     <div className="flex sm:hidden items-center gap-1.5">
-                        {/* Mobile Theme Toggle — Clean Icon Only */}
+                        {/* Mobile Theme Toggle */}
                         <button
                             onClick={toggleTheme}
                             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -184,28 +184,32 @@ export default function Navbar() {
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
-                        className="fixed inset-0 z-40 sm:hidden"
+                        className="fixed inset-0 z-40 sm:hidden flex flex-col justify-between"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.18 }}
+                        transition={{ duration: 0.2 }}
                     >
                         {/* Backdrop */}
                         <div
-                            className="absolute inset-0 bg-white/96 dark:bg-[#0a0a0a]/96 backdrop-blur-xl"
+                            className="absolute inset-0 bg-white/98 dark:bg-[#0a0a0a]/98 backdrop-blur-2xl"
                             onClick={() => setMobileOpen(false)}
                         />
 
-                        {/* Menu items */}
+                        {/* Menu Navigation items */}
                         <motion.nav
-                            className="relative flex flex-col items-center justify-center h-full gap-2 px-8"
-                            initial={{ opacity: 0, y: 16 }}
+                            className="relative flex flex-col pt-24 px-7 gap-3 z-10"
+                            initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 16 }}
-                            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                             role="navigation"
                             aria-label="Mobile navigation"
                         >
+                            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-2">
+                                Navigation
+                            </span>
+
                             {links.map((l, i) => {
                                 const isCurrent = activeSection === l.href.slice(1);
                                 return (
@@ -213,23 +217,65 @@ export default function Navbar() {
                                         key={l.href}
                                         href={l.href}
                                         onClick={e => handleClick(e, l.href)}
-                                        className={`flex items-center gap-4 px-6 py-4 w-full max-w-[280px] no-underline rounded-2xl outline-none focus:outline-none transition-all duration-150 ${
+                                        className={`flex items-baseline justify-between py-3 border-b border-gray-100 dark:border-white/[0.06] no-underline outline-none focus:outline-none transition-all duration-150 ${
                                             isCurrent
                                                 ? 'text-indigo-600 dark:text-indigo-400 font-bold'
-                                                : 'text-gray-700 dark:text-gray-200 font-medium hover:font-bold hover:text-gray-900 dark:hover:text-white'
+                                                : 'text-gray-800 dark:text-gray-100 font-medium hover:text-indigo-600 dark:hover:text-indigo-400'
                                         }`}
-                                        initial={{ opacity: 0, x: -16 }}
+                                        initial={{ opacity: 0, x: -12 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
                                     >
-                                        <span className="text-[10px] font-bold tabular-nums text-gray-400 dark:text-gray-500 w-5 shrink-0">
-                                            {String(i + 1).padStart(2, '0')}
+                                        <span className="text-[22px] tracking-tight">{l.label}</span>
+                                        <span className="text-[11px] font-mono text-gray-400 dark:text-gray-500">
+                                            0{i + 1}
                                         </span>
-                                        <span className="text-[20px] tracking-tight">{l.label}</span>
                                     </motion.a>
                                 );
                             })}
                         </motion.nav>
+
+                        {/* Mobile Footer / Social Quick Links */}
+                        <motion.div
+                            className="relative px-7 pb-8 z-10 flex flex-col gap-4"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ delay: 0.15, duration: 0.2 }}
+                        >
+                            <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-white/[0.06]">
+                                <span className="text-[12px] text-gray-500 dark:text-gray-400 font-medium">
+                                    Gianssen Jasolin
+                                </span>
+                                <div className="flex items-center gap-4">
+                                    <a
+                                        href="https://github.com/Gianssen"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                                        aria-label="GitHub"
+                                    >
+                                        <Github size={18} />
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/in/gianssen-jasolin/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                                        aria-label="LinkedIn"
+                                    >
+                                        <Linkedin size={18} />
+                                    </a>
+                                    <a
+                                        href="mailto:gjasolin@gmail.com"
+                                        className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                                        aria-label="Email"
+                                    >
+                                        <Mail size={18} />
+                                    </a>
+                                </div>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
