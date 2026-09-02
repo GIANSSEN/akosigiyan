@@ -138,10 +138,10 @@ export default function HeroNew() {
                 {/* ── Avatar + Identity row — EXACT match to reference layout ── */}
                 <motion.div
                     variants={item}
-                    className="flex items-center gap-4 sm:gap-6 mb-7 sm:mb-9"
+                    className="flex items-center gap-3.5 sm:gap-7 md:gap-8 mb-8 sm:mb-10"
                 >
-                    {/* Avatar Circle */}
-                    <div className="relative shrink-0 w-[84px] h-[84px] sm:w-[98px] sm:h-[98px] md:w-[108px] md:h-[108px] rounded-full border-2 border-black dark:border-white p-[2px] bg-white dark:bg-[#0a0a0a] shadow-xs">
+                    {/* Enlarged Avatar Circle */}
+                    <div className="relative shrink-0 w-[124px] h-[124px] min-[380px]:w-[136px] min-[380px]:h-[136px] sm:w-[160px] sm:h-[160px] md:w-[180px] md:h-[180px] rounded-full border-[3px] border-black dark:border-white p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm">
                         <div className="w-full h-full rounded-full overflow-hidden">
                             <PixelTransition
                                 firstContent={
@@ -151,7 +151,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.12)',
+                                            transform: 'scale(1.16)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -164,7 +164,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.12)',
+                                            transform: 'scale(1.16)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -184,16 +184,16 @@ export default function HeroNew() {
                     </div>
 
                     {/* Name + Verified Badge on 1 SINGLE LINE + Social Icons underneath */}
-                    <div className="flex flex-col justify-center min-w-0">
-                        <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap">
-                            <h1 className="text-[20px] min-[360px]:text-[22px] sm:text-[26px] md:text-[30px] font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap">
+                    <div className="flex flex-col justify-center min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-nowrap whitespace-nowrap">
+                            <h1 className="text-[19px] min-[360px]:text-[21px] min-[400px]:text-[24px] sm:text-[32px] md:text-[38px] font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap shrink-0">
                                 Gianssen Jasolin
                             </h1>
-                            <VerifiedBadge className="w-[18px] h-[18px] min-[360px]:w-[20px] min-[360px]:h-[20px] sm:w-[24px] sm:h-[24px]" />
+                            <VerifiedBadge className="w-[19px] h-[19px] min-[360px]:w-[21px] min-[360px]:h-[21px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px] shrink-0" />
                         </div>
 
                         {/* Social Icons row */}
-                        <div className="flex items-center gap-3 mt-2 text-gray-700 dark:text-gray-300">
+                        <div className="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-3 text-gray-700 dark:text-gray-300">
                             {socials.map((s) => (
                                 <a
                                     key={s.label}
