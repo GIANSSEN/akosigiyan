@@ -37,9 +37,9 @@ function AnimatedHeading({ text, className }) {
 
 /* ── Email copy button ───────────────────────────────────────────── */
 function CopyEmailButton({ email }) {
-    const { showToast }  = useToast();
+    const { showToast } = useToast();
     const [copied, setCopied] = useState(false);
-    const reduceMotion   = useReducedMotion();
+    const reduceMotion = useReducedMotion();
 
     const handleCopy = async (e) => {
         e.preventDefault();
@@ -127,28 +127,28 @@ function ContactCard({ card, index }) {
 export default function WorkTogether() {
     const cards = [
         {
-            icon:      <Mail size={16} />,
-            label:     'Email',
-            value:     contactInfo.email,
-            href:      `mailto:${contactInfo.email}`,
-            external:  false,
-            isEmail:   true,
+            icon: <Mail size={16} />,
+            label: 'Email',
+            value: contactInfo.email,
+            href: `mailto:${contactInfo.email}`,
+            external: false,
+            isEmail: true,
             glowColor: 'rgba(99,102,241,0.15)',
         },
         {
-            icon:      <Calendar size={16} />,
-            label:     "Let's Talk",
-            value:     'Schedule a Call',
-            href:      contactInfo.phoneHref,
-            external:  false,
-            isEmail:   false,
+            icon: <Calendar size={16} />,
+            label: "Let's Talk",
+            value: 'Schedule a Call',
+            href: contactInfo.phoneHref,
+            external: false,
+            isEmail: false,
             glowColor: 'rgba(6,182,212,0.15)',
         },
     ];
 
     return (
         <section id="contact" className="py-14 sm:py-16 scroll-mt-20">
-            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
 
                 <AnimatedHeading
                     text="Let's work together."

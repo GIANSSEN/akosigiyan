@@ -6,14 +6,14 @@ export default function FooterNew() {
     const reduceMotion = useReducedMotion();
 
     const socials = [
-        { icon: <Github size={14} />,   href: socialLinks[1]?.href || '#', label: 'GitHub',   color: '#6366f1' },
+        { icon: <Github size={14} />, href: socialLinks[1]?.href || '#', label: 'GitHub', color: '#6366f1' },
         { icon: <Linkedin size={14} />, href: socialLinks[0]?.href || '#', label: 'LinkedIn', color: '#0A66C2' },
-        { icon: <Mail size={14} />,     href: `mailto:${contactInfo.email}`, label: 'Email',  color: '#EA4335' },
+        { icon: <Mail size={14} />, href: `mailto:${contactInfo.email}`, label: 'Email', color: '#EA4335' },
     ];
 
     return (
         <footer className="py-10">
-            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
                 <motion.div
                     initial={reduceMotion ? {} : { opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}

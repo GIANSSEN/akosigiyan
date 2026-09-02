@@ -9,7 +9,7 @@ const CELL = 11, GAP = 3, STEP = CELL + GAP;
 const YEARS = [2026, 2025, 2024];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const COLORS_LIGHT = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
-const COLORS_DARK  = ['#1b1f24', '#0e4429', '#006d32', '#26a641', '#39d353'];
+const COLORS_DARK = ['#1b1f24', '#0e4429', '#006d32', '#26a641', '#39d353'];
 
 function mulberry32(seed) {
     return function () {
@@ -67,7 +67,7 @@ export default function GithubActivity() {
 
     return (
         <section id="github" className="py-12 scroll-mt-20">
-            <div className="max-w-[880px] mx-auto px-5 sm:px-8">
+            <div className="max-w-[780px] mx-auto px-5 sm:px-8">
                 <ScrollReveal>
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <h2 className="font-serif text-[26px] sm:text-[30px] font-normal text-gray-900 dark:text-white">
@@ -82,11 +82,10 @@ export default function GithubActivity() {
                                     <button
                                         key={y}
                                         onClick={() => setYear(y)}
-                                        className={`px-2.5 py-1.5 rounded-full text-[12px] font-bold tabular-nums transition-colors focus-ring ${
-                                            y === year
+                                        className={`px-2.5 py-1.5 rounded-full text-[12px] font-bold tabular-nums transition-colors focus-ring ${y === year
                                                 ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
                                                 : 'text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white'
-                                        }`}
+                                            }`}
                                     >
                                         {y}
                                     </button>

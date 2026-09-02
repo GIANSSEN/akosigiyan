@@ -5,16 +5,16 @@ import { useTheme } from '@/context/ThemeContext';
 
 /* 3 menu items as requested */
 const links = [
-    { label: 'Projects',    href: '#projects' },
-    { label: 'Experience',  href: '#experience' },
-    { label: 'Contact',     href: '#contact' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
     const { isDark, toggleTheme } = useTheme();
-    const [mobileOpen, setMobileOpen]       = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('');
-    const [scrolled, setScrolled]           = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const reduceMotion = useReducedMotion();
 
     /* ── Lock body scroll when mobile menu open ── */
@@ -69,7 +69,7 @@ export default function Navbar() {
                         : 'bg-white/80 dark:bg-[#0a0a0a]/80 border-b border-gray-200/40 dark:border-white/[0.04]'
                     } backdrop-blur-md`}
             >
-                <nav className="max-w-[880px] mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
+                <nav className="max-w-[820px] mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
 
                     {/* ── GGJ Monogram Logo ── */}
                     <a
@@ -96,11 +96,10 @@ export default function Navbar() {
                                     key={l.href}
                                     href={l.href}
                                     onClick={e => handleClick(e, l.href)}
-                                    className={`px-3.5 py-1.5 text-[13.5px] no-underline outline-none focus:outline-none transition-all duration-150 ${
-                                        isCurrent
+                                    className={`px-3.5 py-1.5 text-[13.5px] no-underline outline-none focus:outline-none transition-all duration-150 ${isCurrent
                                             ? 'text-gray-900 dark:text-white font-bold'
                                             : 'text-gray-500 dark:text-gray-400 font-medium hover:text-gray-900 dark:hover:text-white hover:font-bold'
-                                    }`}
+                                        }`}
                                     aria-current={isCurrent ? 'true' : undefined}
                                 >
                                     {l.label}
@@ -217,11 +216,10 @@ export default function Navbar() {
                                         key={l.href}
                                         href={l.href}
                                         onClick={e => handleClick(e, l.href)}
-                                        className={`flex items-baseline justify-between py-3 border-b border-gray-100 dark:border-white/[0.06] no-underline outline-none focus:outline-none transition-all duration-150 ${
-                                            isCurrent
+                                        className={`flex items-baseline justify-between py-3 border-b border-gray-100 dark:border-white/[0.06] no-underline outline-none focus:outline-none transition-all duration-150 ${isCurrent
                                                 ? 'text-indigo-600 dark:text-indigo-400 font-bold'
                                                 : 'text-gray-800 dark:text-gray-100 font-medium hover:text-indigo-600 dark:hover:text-indigo-400'
-                                        }`}
+                                            }`}
                                         initial={{ opacity: 0, x: -12 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}

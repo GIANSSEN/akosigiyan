@@ -129,7 +129,7 @@ function ProjectCard({ project, index }) {
 export default function ProjectShowcase() {
     return (
         <section id="projects" className="py-12 scroll-mt-20">
-            <div className="max-w-[880px] mx-auto px-6 sm:px-8">
+            <div className="max-w-[780px] mx-auto px-6 sm:px-8">
 
                 {/* Section header */}
                 <ScrollReveal>
