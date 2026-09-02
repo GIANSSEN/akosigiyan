@@ -130,7 +130,7 @@ export default function HeroNew() {
             )}
 
             <motion.div
-                className="max-w-[880px] mx-auto px-5 sm:px-8 relative z-10"
+                className="max-w-[880px] mx-auto px-4 sm:px-8 relative z-10"
                 variants={container}
                 initial="hidden"
                 animate="show"
@@ -138,10 +138,10 @@ export default function HeroNew() {
                 {/* ── Avatar + Identity row — EXACT match to reference layout ── */}
                 <motion.div
                     variants={item}
-                    className="flex items-center gap-3.5 sm:gap-7 md:gap-8 mb-8 sm:mb-10"
+                    className="flex items-center gap-3 sm:gap-6 md:gap-7 mb-7 sm:mb-9"
                 >
-                    {/* Enlarged Avatar Circle */}
-                    <div className="relative shrink-0 w-[124px] h-[124px] min-[380px]:w-[136px] min-[380px]:h-[136px] sm:w-[160px] sm:h-[160px] md:w-[180px] md:h-[180px] rounded-full border-[3px] border-black dark:border-white p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm">
+                    {/* Responsive Avatar Circle */}
+                    <div className="relative shrink-0 w-[92px] h-[92px] min-[360px]:w-[104px] min-[360px]:h-[104px] min-[420px]:w-[118px] min-[420px]:h-[118px] sm:w-[150px] sm:h-[150px] md:w-[170px] md:h-[170px] rounded-full border-[2.5px] sm:border-[3px] border-black dark:border-white p-[2px] sm:p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm">
                         <div className="w-full h-full rounded-full overflow-hidden">
                             <PixelTransition
                                 firstContent={
@@ -151,7 +151,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.16)',
+                                            transform: 'scale(1.15)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -164,7 +164,7 @@ export default function HeroNew() {
                                         style={{
                                             width: '100%', height: '100%',
                                             objectFit: 'cover', objectPosition: 'center 15%',
-                                            transform: 'scale(1.16)',
+                                            transform: 'scale(1.15)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -184,16 +184,16 @@ export default function HeroNew() {
                     </div>
 
                     {/* Name + Verified Badge on 1 SINGLE LINE + Social Icons underneath */}
-                    <div className="flex flex-col justify-center min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-nowrap whitespace-nowrap">
-                            <h1 className="text-[19px] min-[360px]:text-[21px] min-[400px]:text-[24px] sm:text-[32px] md:text-[38px] font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap shrink-0">
+                    <div className="flex flex-col justify-center min-w-0 flex-1 overflow-visible">
+                        <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap whitespace-nowrap overflow-visible">
+                            <h1 className="text-[17px] min-[360px]:text-[19px] min-[420px]:text-[22px] sm:text-[30px] md:text-[36px] font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap shrink-0">
                                 Gianssen Jasolin
                             </h1>
-                            <VerifiedBadge className="w-[19px] h-[19px] min-[360px]:w-[21px] min-[360px]:h-[21px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px] shrink-0" />
+                            <VerifiedBadge className="w-[16px] h-[16px] min-[360px]:w-[18px] min-[360px]:h-[18px] sm:w-[24px] sm:h-[24px] md:w-[28px] md:h-[28px] shrink-0" />
                         </div>
 
                         {/* Social Icons row */}
-                        <div className="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-3 text-gray-700 dark:text-gray-300">
+                        <div className="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-2.5 text-gray-700 dark:text-gray-300">
                             {socials.map((s) => (
                                 <a
                                     key={s.label}
