@@ -17,8 +17,8 @@ const ROLES = [
 
 function useTypewriter(words, { typingSpeed = 80, deletingSpeed = 40, pause = 1800 } = {}) {
     const [displayed, setDisplayed] = useState('');
-    const [wordIdx, setWordIdx] = useState(0);
-    const [phase, setPhase] = useState('typing'); // 'typing' | 'pausing' | 'deleting'
+    const [wordIdx, setWordIdx]     = useState(0);
+    const [phase, setPhase]         = useState('typing'); // 'typing' | 'pausing' | 'deleting'
 
     useEffect(() => {
         const word = words[wordIdx];
@@ -54,7 +54,7 @@ function useTypewriter(words, { typingSpeed = 80, deletingSpeed = 40, pause = 18
 }
 
 /* ── Verified badge ──────────────────────────────────────────────── */
-const VerifiedBadge = ({ className = "w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]" }) => (
+const VerifiedBadge = ({ className = "w-[22px] h-[22px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px]" }) => (
     <svg
         className={`shrink-0 ${className}`}
         viewBox="0 0 24 24"
@@ -83,9 +83,9 @@ export default function HeroNew() {
 
     // Only GitHub, LinkedIn, Email (IG and Facebook removed)
     const socials = [
-        { icon: <Github size={15} />, href: socialLinks[1]?.href || '#', label: 'GitHub', color: '#24292e', darkColor: '#e5e7eb' },
-        { icon: <Linkedin size={15} />, href: socialLinks[0]?.href || '#', label: 'LinkedIn', color: '#0A66C2', darkColor: '#60a5fa' },
-        { icon: <Mail size={15} />, href: `mailto:${contactInfo.email}`, label: 'Email', color: '#EA4335', darkColor: '#fca5a5' },
+        { icon: <Github className="w-[17px] h-[17px] sm:w-[19px] sm:h-[19px]" />,   href: socialLinks[1]?.href || '#', label: 'GitHub',   color: '#24292e', darkColor: '#e5e7eb' },
+        { icon: <Linkedin className="w-[17px] h-[17px] sm:w-[19px] sm:h-[19px]" />, href: socialLinks[0]?.href || '#', label: 'LinkedIn', color: '#0A66C2', darkColor: '#60a5fa' },
+        { icon: <Mail className="w-[17px] h-[17px] sm:w-[19px] sm:h-[19px]" />,     href: `mailto:${contactInfo.email}`, label: 'Email',  color: '#EA4335', darkColor: '#fca5a5' },
     ];
 
     const container = {
@@ -115,7 +115,7 @@ export default function HeroNew() {
             )}
 
             <motion.div
-                className="max-w-[780px] mx-auto px-5 sm:px-8 relative z-10"
+                className="max-w-[880px] mx-auto px-5 sm:px-8 relative z-10"
                 variants={container}
                 initial="hidden"
                 animate="show"
@@ -123,14 +123,14 @@ export default function HeroNew() {
                 {/* ── Avatar + Identity row ─────────────────────────────── */}
                 <motion.div
                     variants={item}
-                    className="flex items-center gap-4 sm:gap-6 mb-7 sm:mb-9"
+                    className="flex items-center gap-4 sm:gap-7 mb-7 sm:mb-9"
                 >
-                    {/* Avatar with solid black circular border & slightly zoomed photo */}
+                    {/* Enlarged Avatar with black circular border & slightly zoomed photo */}
                     <div
-                        className="relative shrink-0 rounded-full border-2 border-black dark:border-white p-[2px] bg-white dark:bg-[#0a0a0a] shadow-xs"
+                        className="relative shrink-0 rounded-full border-2 sm:border-[2.5px] border-black dark:border-white p-[3px] bg-white dark:bg-[#0a0a0a] shadow-sm"
                         style={{
-                            width: 'clamp(92px, 20vw, 134px)',
-                            height: 'clamp(92px, 20vw, 134px)',
+                            width:  'clamp(120px, 26vw, 172px)',
+                            height: 'clamp(120px, 26vw, 172px)',
                         }}
                     >
                         <div className="w-full h-full rounded-full overflow-hidden">
@@ -141,8 +141,8 @@ export default function HeroNew() {
                                         alt="Gianssen Jasolin"
                                         style={{
                                             width: '100%', height: '100%',
-                                            objectFit: 'cover', objectPosition: 'center 18%',
-                                            transform: 'scale(1.15)',
+                                            objectFit: 'cover', objectPosition: 'center 15%',
+                                            transform: 'scale(1.14)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -154,8 +154,8 @@ export default function HeroNew() {
                                         alt="Gianssen alter ego"
                                         style={{
                                             width: '100%', height: '100%',
-                                            objectFit: 'cover', objectPosition: 'center 18%',
-                                            transform: 'scale(1.15)',
+                                            objectFit: 'cover', objectPosition: 'center 15%',
+                                            transform: 'scale(1.14)',
                                             pointerEvents: 'none', userSelect: 'none',
                                         }}
                                         draggable={false}
@@ -168,50 +168,47 @@ export default function HeroNew() {
                                 aspectRatio="100%"
                                 style={{
                                     width: '100%', height: '100%',
-                                    borderRadius: '50%', overflow: 'hidden', outline: 'none',
+                                    borderRadius: '9999px',
                                 }}
                             />
                         </div>
                     </div>
 
-                    {/* Name + verified badge in 1 SINGLE LINE + social icons */}
-                    <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap mb-1">
-                            <h1 className="text-[18px] min-[360px]:text-[20px] min-[400px]:text-[22px] sm:text-[26px] md:text-[29px] font-bold tracking-tight text-gray-900 dark:text-white leading-none whitespace-nowrap">
+                    {/* Name + Verified Badge in 1 SINGLE LINE + Social Icons */}
+                    <div className="min-w-0 flex-1 flex flex-col justify-center">
+                        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-nowrap whitespace-nowrap mb-1 sm:mb-2">
+                            <h1 className="font-sans text-[22px] min-[360px]:text-[25px] min-[400px]:text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-bold text-gray-900 dark:text-white tracking-tight leading-none whitespace-nowrap truncate">
                                 Gianssen Jasolin
                             </h1>
                             <VerifiedBadge />
                         </div>
 
-                        {/* Social icons row (GitHub, LinkedIn, Mail) */}
-                        <div className="flex items-center gap-1.5 sm:gap-2 mt-1.5">
-                            {socials.map(s => (
-                                <motion.a
+                        {/* Social Icons row */}
+                        <div className="flex items-center gap-1.5 sm:gap-2 mt-1">
+                            {socials.map((s) => (
+                                <a
                                     key={s.label}
                                     href={s.href}
-                                    target={s.href.startsWith('http') ? '_blank' : undefined}
-                                    rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                    target={s.href.startsWith('mailto:') ? '_self' : '_blank'}
+                                    rel="noopener noreferrer"
                                     aria-label={s.label}
-                                    className="p-1 sm:p-1.5 rounded-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.08] no-underline flex items-center transition-colors"
-                                    whileHover={reduceMotion ? {} : { y: -2, scale: 1.15, color: isDark ? s.darkColor : s.color }}
-                                    whileTap={reduceMotion ? {} : { scale: 0.95 }}
-                                    transition={{ type: 'spring', stiffness: 500, damping: 12 }}
+                                    className="p-1.5 sm:p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.08] rounded-lg transition-all duration-150 outline-none"
                                 >
                                     {s.icon}
-                                </motion.a>
+                                </a>
                             ))}
                         </div>
                     </div>
                 </motion.div>
 
-                {/* ── Heading with typewriter ──────────────────────────── */}
+                {/* ── Headline with typewriter ──────────────────────────── */}
                 <motion.div variants={item} className="mb-5 sm:mb-6">
-                    <h2 className="text-[22px] sm:text-[28px] md:text-[33px] leading-[1.22] tracking-tight text-gray-900 dark:text-white">
-                        <span className="font-bold">
-                            {reduceMotion ? 'Full-Stack Web Developer' : typedRole}
+                    <h2 className="text-[24px] sm:text-[30px] md:text-[36px] leading-[1.22] tracking-tight text-gray-900 dark:text-white font-bold font-sans">
+                        <span>
+                            {reduceMotion ? 'Full-Stack Developer' : typedRole}
                         </span>
                         {!reduceMotion && (
-                            <span className="hero-cursor ml-[2px] inline-block w-[2px] h-[1em] bg-indigo-500 align-middle relative top-[-1px]" />
+                            <span className="hero-cursor ml-[2px] inline-block w-[2.5px] h-[0.9em] bg-indigo-500 align-middle relative top-[-1px]" />
                         )}
                         <span className="block mt-1 font-light text-[17px] sm:text-[20px] md:text-[22px] text-gray-600 dark:text-gray-400">
                             React &nbsp;&amp;&nbsp; Laravel&nbsp; — &nbsp;Metro Manila, PH
@@ -219,8 +216,8 @@ export default function HeroNew() {
                     </h2>
                 </motion.div>
 
-                {/* ── Bio ── */}
-                <motion.div variants={item} className="space-y-3 max-w-[620px] mb-8 text-[14px] sm:text-[14.5px] leading-[1.85] text-gray-600 dark:text-gray-300 font-normal">
+                {/* ── Bio paragraphs ── */}
+                <motion.div variants={item} className="space-y-3 max-w-[700px] mb-8 text-[14.5px] sm:text-[15.5px] leading-[1.85] text-gray-600 dark:text-gray-300 font-normal">
                     <p>
                         I'm a full-stack developer. I build modern web &amp; mobile apps, and these days I'm focused on generative AI.
                     </p>
