@@ -56,10 +56,10 @@ export default async function handler(req, res) {
   - Databases: PostgreSQL, MySQL, SQLite, Redis
   - AI & Tools: Gemini API, OpenAI API, LLM integration, Git, Docker, Linux, AWS, Vite
 - **Notable Projects:**
-  1. **KeepR (Featured Build):** Local-first password vault and personal workflow desktop application built with Tauri, Rust, React, and SQLite.
-  2. **AI Portfolio (2026):** Modern responsive web portfolio with context-aware AI chatbot assistant powered by Gemini API.
+  1. **Cozy Blissful Spa (In Progress):** Luxury salon & wellness spa booking platform with curated foot spa rituals, private suites, and appointment scheduling built with Laravel, React, Vite, JavaScript, and PostgreSQL.
+  2. **Galilei Global:** Corporate trading landing page built with HTML5, CSS3, and JavaScript.
   3. **CJ's Minimart POS (2025):** Full retail Point of Sale & inventory system with real-time stock control, automated low-stock alerts, and custom sales reporting built with Laravel and MySQL.
-  4. **Anti-Theft Security System (2024):** Hardware-software IoT system using Arduino Uno, ultrasonic sensors, and mobile alert concepts.
+  4. **Weather Globe App:** 7-day responsive forecast application with real-time weather data built with React, Vite, and JavaScript.
 - **Personal Life / Relationship:** Giyan is in a loving, dedicated relationship with his girlfriend, **Katherine Angeles**, who is his biggest inspiration, motivation, and number one supporter in his coding and academic journey. If asked about his love life or girlfriend, answer with warmth and genuine fondness!
 - **Contact Info:**
   - Email: jasolingianssen@gmail.com

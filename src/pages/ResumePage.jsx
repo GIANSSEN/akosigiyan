@@ -217,6 +217,13 @@ export default function ResumePage() {
                         <div className="r-s-title">Projects</div>
                         {[
                             {
+                                role: 'Cozy Blissful Spa',
+                                link: '#',
+                                linkText: 'In Progress · Full-Stack',
+                                date: 'Laravel · React · PostgreSQL',
+                                bullets: ['A sanctuary salon & wellness spa booking platform featuring curated foot spa rituals, private suites, and automated appointment scheduling'],
+                            },
+                            {
                                 role: 'Weather Globe App',
                                 link: 'https://weather-globe-app.vercel.app',
                                 linkText: 'weather-globe-app.vercel.app',

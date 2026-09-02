@@ -33,7 +33,7 @@ export default function ProjectsList() {
                                         </span>
                                         {!live && (
                                             <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-400/10 rounded-full px-2 py-[3px]">
-                                                In Development
+                                                {p.status || 'In Progress'}
                                             </span>
                                         )}
                                     </div>
