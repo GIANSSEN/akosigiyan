@@ -217,14 +217,14 @@ export default function HeroNew() {
 
                 {/* ── Headline with typewriter ──────────────────────────── */}
                 <motion.div variants={item} className="mb-5 sm:mb-6">
-                    <h2 className="text-[22px] sm:text-[28px] md:text-[34px] leading-[1.22] tracking-tight text-gray-900 dark:text-white font-bold font-sans">
-                        <span>
+                    <h2 className="text-[26px] min-[400px]:text-[30px] sm:text-[38px] md:text-[46px] leading-[1.18] tracking-tight font-serif">
+                        <span className="neon-chromatic-text">
                             {reduceMotion ? 'Full-Stack Developer' : typedRole}
                         </span>
                         {!reduceMotion && (
-                            <span className="hero-cursor ml-[2px] inline-block w-[2.5px] h-[0.9em] bg-indigo-500 align-middle relative top-[-1px]" />
+                            <span className="hero-cursor-neon" />
                         )}
-                        <span className="block mt-1 font-light text-[16px] sm:text-[19px] md:text-[21px] text-gray-600 dark:text-gray-400">
+                        <span className="block mt-1.5 font-sans font-light text-[15px] sm:text-[18px] md:text-[20px] text-gray-600 dark:text-gray-400 tracking-normal">
                             React &nbsp;&amp;&nbsp; Laravel&nbsp; — &nbsp;Metro Manila, PH
                         </span>
                     </h2>

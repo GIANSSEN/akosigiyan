@@ -1152,6 +1152,89 @@ html {
 }
 
 /* ════════════════════════════════════════════════════════════
+   21ST.DEV STYLE NEON CHROMATIC ABERRATION TEXT
+════════════════════════════════════════════════════════════ */
+.neon-chromatic-text {
+    font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    display: inline-block;
+    color: #09090b;
+    text-shadow:
+        -1.8px -1.2px 0 rgba(239, 68, 68, 0.85),
+        1.8px 1.2px 0 rgba(6, 182, 212, 0.85),
+        0 0 12px rgba(99, 102, 241, 0.25);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.dark .neon-chromatic-text {
+    color: #ffffff;
+    text-shadow:
+        -2.2px -1.4px 0 rgba(255, 20, 60, 0.98),
+        -1px -0.6px 0 rgba(255, 80, 0, 0.85),
+        2.2px 1.4px 0 rgba(0, 235, 255, 0.98),
+        1px 0.6px 0 rgba(0, 110, 255, 0.9),
+        0 0 14px rgba(0, 235, 255, 0.5),
+        0 0 28px rgba(255, 20, 60, 0.35);
+    animation: neon-chromatic-drift 4s ease-in-out infinite alternate;
+}
+
+@keyframes neon-chromatic-drift {
+    0% {
+        text-shadow:
+            -2px -1.3px 0 rgba(255, 20, 60, 0.95),
+            -0.8px -0.5px 0 rgba(255, 80, 0, 0.8),
+            2px 1.3px 0 rgba(0, 235, 255, 0.95),
+            0.8px 0.5px 0 rgba(0, 110, 255, 0.85),
+            0 0 14px rgba(0, 235, 255, 0.5),
+            0 0 28px rgba(255, 20, 60, 0.32);
+    }
+    50% {
+        text-shadow:
+            -2.6px -1.6px 0 rgba(255, 20, 60, 0.98),
+            -1.2px -0.7px 0 rgba(255, 90, 0, 0.88),
+            2.6px 1.6px 0 rgba(0, 240, 255, 0.98),
+            1.2px 0.7px 0 rgba(0, 120, 255, 0.92),
+            0 0 20px rgba(0, 240, 255, 0.65),
+            0 0 36px rgba(255, 20, 60, 0.42);
+    }
+    100% {
+        text-shadow:
+            -1.8px -1.1px 0 rgba(255, 20, 60, 0.92),
+            -0.7px -0.4px 0 rgba(255, 75, 0, 0.75),
+            1.8px 1.1px 0 rgba(0, 230, 255, 0.92),
+            0.7px 0.4px 0 rgba(0, 100, 255, 0.8),
+            0 0 12px rgba(0, 235, 255, 0.42),
+            0 0 24px rgba(255, 20, 60, 0.28);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dark .neon-chromatic-text {
+        animation: none !important;
+    }
+}
+
+.hero-cursor-neon {
+    display: inline-block;
+    width: 2.5px;
+    height: 0.88em;
+    margin-left: 4px;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+    background: #00f0ff;
+    border-radius: 1px;
+    box-shadow:
+        -1.5px 0 0 rgba(255, 20, 60, 0.9),
+        1.5px 0 0 rgba(0, 235, 255, 0.9),
+        0 0 10px rgba(0, 235, 255, 0.85),
+        0 0 18px rgba(255, 20, 60, 0.5);
+    animation: hero-cursor-blink 0.85s step-end infinite;
+}
+
+/* ════════════════════════════════════════════════════════════
    CONTACT CARD GLOW
 ════════════════════════════════════════════════════════════ */
 .contact-card {
