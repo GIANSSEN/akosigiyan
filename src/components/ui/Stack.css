@@ -6,6 +6,7 @@
   /* Prevent text selection during swipe */
   user-select: none;
   -webkit-user-select: none;
+  touch-action: pan-y;
 }
 
 .card-rotate {
