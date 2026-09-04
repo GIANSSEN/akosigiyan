@@ -66,7 +66,7 @@ export default function GithubActivity() {
     const colors = isDark ? COLORS_DARK : COLORS_LIGHT;
 
     return (
-        <section id="github" className="py-12 scroll-mt-20">
+        <section id="github" className="py-8 sm:py-10 scroll-mt-20">
             <div className="max-w-[780px] mx-auto px-5 sm:px-8">
                 <ScrollReveal>
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 mb-5">

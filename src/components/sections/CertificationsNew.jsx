@@ -28,29 +28,15 @@ export default function CertificationsNew() {
     const currentCert = selectedCertIndex !== null ? certifications[selectedCertIndex] : null;
 
     return (
-        <section id="certifications" className="py-12 sm:py-16 scroll-mt-20">
+        <section id="certifications" className="py-8 sm:py-10 scroll-mt-20">
             <div className="max-w-[780px] mx-auto px-4 sm:px-8">
 
                 {/* ── Section Header ── */}
                 <ScrollReveal>
-                    <div className="flex items-baseline justify-between mb-6 sm:mb-8">
-                        <div>
-                            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-600 dark:text-cyan-400 block mb-1">
-                                Credentials &amp; Honors
-                            </span>
-                            <h2 className="font-serif text-[26px] sm:text-[32px] font-normal text-gray-900 dark:text-white tracking-tight">
-                                Certifications
-                            </h2>
-                        </div>
-
-                        {/* Minimalist Verified Counter Pill */}
-                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-gray-200/80 dark:border-white/10 bg-gray-50 dark:bg-white/[0.03] text-[11px] font-medium text-gray-500 dark:text-gray-400">
-                            <ShieldCheck size={13} className="text-emerald-500 shrink-0" />
-                            <span className="tabular-nums font-semibold text-gray-700 dark:text-gray-300">
-                                {certifications.length}
-                            </span>
-                            <span>verified</span>
-                        </div>
+                    <div className="mb-6 sm:mb-8">
+                        <h2 className="font-serif text-[26px] sm:text-[32px] font-normal text-gray-900 dark:text-white tracking-tight">
+                            Certifications
+                        </h2>
                     </div>
                 </ScrollReveal>
 

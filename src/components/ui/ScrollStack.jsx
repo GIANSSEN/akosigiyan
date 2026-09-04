@@ -46,8 +46,9 @@ const ScrollStack = forwardRef(function ScrollStack(
     scaleEndPosition = '20px',
     baseScale = 0.94,
     rotationAmount = 0,
-    blurAmount = 2,
+    blurAmount = 0,
     useWindowScroll = true,
+    onCardClick,
     onStackComplete,
     onActiveIndexChange
   },
@@ -86,7 +87,7 @@ const ScrollStack = forwardRef(function ScrollStack(
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Passive scroll listener to update activeIndex for counter and buttons
+  // Passive scroll listener with hysteresis to eliminate vibration & jitter
   const updateActiveCard = useCallback(() => {
     if (!cardsRef.current || !cardsRef.current.length) return;
 
@@ -94,31 +95,40 @@ const ScrollStack = forwardRef(function ScrollStack(
     const baseTopPx = parseStackPosition(stackPosition, isMobileScreen);
     const stackDistPx = isMobileScreen ? Math.min(itemStackDistance, 10) : itemStackDistance;
 
-    let currentActive = 0;
     const count = cardsRef.current.length;
+    let newActive = activeIndexRef.current;
 
-    for (let i = 0; i < count; i++) {
+    // Scan backwards from highest to find current active card with hysteresis
+    for (let i = count - 1; i >= 0; i--) {
       const el = cardsRef.current[i];
       if (!el) continue;
       const rect = el.getBoundingClientRect();
       const stickyTop = baseTopPx + (isMobileScreen ? Math.min(i, 6) : i) * stackDistPx;
 
-      // When the card top has reached within 28px of its sticky dock, it is the active card
-      if (rect.top <= stickyTop + 28) {
-        currentActive = i;
+      // Hysteresis window:
+      // If advancing forward (i > current): card top must come within stickyTop + 16px
+      // If retreating backward (i <= current): card top must move down beyond stickyTop + 45px
+      const threshold = (i > activeIndexRef.current) ? (stickyTop + 16) : (stickyTop + 45);
+
+      if (rect.top <= threshold) {
+        newActive = i;
+        break;
+      }
+      if (i === 0) {
+        newActive = 0;
       }
     }
 
-    if (currentActive !== activeIndexRef.current) {
-      activeIndexRef.current = currentActive;
-      setActiveIndex(currentActive);
-      onActiveIndexChange?.(currentActive);
+    if (newActive !== activeIndexRef.current) {
+      activeIndexRef.current = newActive;
+      setActiveIndex(newActive);
+      onActiveIndexChange?.(newActive);
     }
 
-    if (currentActive === count - 1 && !stackCompletedRef.current) {
+    if (newActive === count - 1 && !stackCompletedRef.current) {
       stackCompletedRef.current = true;
       onStackComplete?.();
-    } else if (currentActive < count - 1 && stackCompletedRef.current) {
+    } else if (newActive < count - 1 && stackCompletedRef.current) {
       stackCompletedRef.current = false;
     }
   }, [itemStackDistance, onActiveIndexChange, onStackComplete, parseStackPosition, stackPosition]);
@@ -232,7 +242,7 @@ const ScrollStack = forwardRef(function ScrollStack(
 
   return (
     <div className={containerClassName} ref={scrollerRef}>
-      <div className={`scroll-stack-inner ${innerClassName || 'pt-2 pb-16 sm:pb-24'}`}>
+      <div className={`scroll-stack-inner ${innerClassName || 'pt-1 pb-3 sm:pb-4'}`}>
         {childrenArray.map((child, i) => {
           const stickyTop = isMobile
             ? baseTop + Math.min(i, 6) * stackDist
@@ -251,29 +261,50 @@ const ScrollStack = forwardRef(function ScrollStack(
             ? Math.max(isMobile ? 0.78 : 0.72, 1 - depth * (isMobile ? 0.07 : 0.09))
             : 1;
 
-          const cardBlur = isStacked && !isMobile && blurAmount
-            ? Math.min(4, depth * blurAmount)
-            : 0;
-
           return (
             <div
               key={i}
               ref={el => (cardsRef.current[i] = el)}
-              className="scroll-stack-item-wrapper"
+              className={`scroll-stack-item-wrapper ${isStacked ? 'scroll-stack-item-stacked group/stacked' : ''}`}
               data-stack-index={i}
+              onClick={() => {
+                if (isStacked) {
+                  const total = cardsRef.current.length;
+                  const el = cardsRef.current[i];
+                  if (el) {
+                    const isMobileScreen = typeof window !== 'undefined' && window.innerWidth < 640;
+                    const baseTopPx = parseStackPosition(stackPosition, isMobileScreen);
+                    const stackDistPx = isMobileScreen ? Math.min(itemStackDistance, 10) : itemStackDistance;
+                    const sTop = baseTopPx + (isMobileScreen ? Math.min(i, 6) : i) * stackDistPx;
+                    const container = scrollerRef.current;
+                    if (container) {
+                      const containerRect = container.getBoundingClientRect();
+                      const currentScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+                      const targetScroll = Math.max(0, containerRect.top + currentScrollY + el.offsetTop - sTop + 2);
+                      if (lenisRef.current) {
+                        lenisRef.current.scrollTo(targetScroll, { duration: 0.7 });
+                      } else {
+                        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+                      }
+                    }
+                  }
+                  onCardClick?.(i);
+                }
+              }}
               style={{
                 position: 'sticky',
                 top: `${stickyTop}px`,
                 zIndex: i + 1,
                 marginBottom: isLast ? '0px' : `${effectiveDistance}px`,
+                cursor: isStacked ? 'pointer' : 'default',
               }}
+              title={isStacked ? `Click to bring project 0${i + 1} to front` : undefined}
             >
               <div
                 className="scroll-stack-card-inner"
                 style={{
                   transform: cardScale !== 1 ? `scale(${cardScale})` : 'scale(1)',
                   opacity: cardOpacity,
-                  filter: cardBlur > 0 ? `blur(${cardBlur}px)` : 'none',
                 }}
               >
                 {child}

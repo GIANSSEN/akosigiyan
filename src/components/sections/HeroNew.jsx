@@ -113,7 +113,7 @@ export default function HeroNew() {
     };
 
     return (
-        <section className="relative pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 scroll-mt-20 overflow-hidden">
+        <section className="relative pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-28 lg:pb-12 scroll-mt-20 overflow-hidden">
 
             {/* ── Ambient glow blobs ─────────────────────────────────── */}
             {!reduceMotion && (

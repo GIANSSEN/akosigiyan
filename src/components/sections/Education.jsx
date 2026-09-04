@@ -6,7 +6,7 @@ export default function Education() {
     const reduceMotion = useReducedMotion();
 
     return (
-        <section id="education" className="py-12 scroll-mt-20">
+        <section id="education" className="py-8 sm:py-10 scroll-mt-20">
             <div className="max-w-[780px] mx-auto px-5 sm:px-8">
 
                 <ScrollReveal>

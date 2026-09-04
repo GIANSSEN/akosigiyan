@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { ArrowUpRight, ChevronDown, ChevronUp, Maximize2 } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, ChevronUp, Maximize2, Github, GitFork, Star, Sparkles } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import ScrollStack, { ScrollStackItem } from '@/components/ui/ScrollStack';
 import ImageModal from '@/components/ui/ImageModal';
@@ -157,16 +157,6 @@ export default function ProjectShowcase() {
         return () => window.removeEventListener('resize', checkDimensions);
     }, []);
 
-    const isLastCard = activeIndex >= projects.length - 1;
-
-    const handleNextClick = () => {
-        if (isLastCard) {
-            stackRef.current?.scrollToIndex(0);
-        } else {
-            stackRef.current?.scrollToIndex(activeIndex + 1);
-        }
-    };
-
     const handlePreview = (src, title) => {
         if (src) {
             setPreviewModal({ src, alt: title });
@@ -175,29 +165,27 @@ export default function ProjectShowcase() {
 
     // Calculate comfortable stack position below navbar
     const stackPositionVal = isMobile ? '70px' : isShortViewport ? '78px' : '88px';
-    const itemDistanceVal = isMobile ? 190 : 220;
-    const itemStackDistVal = isMobile ? 10 : 14;
-    const itemScaleVal = isMobile ? 0.015 : 0.035;
-    const rotationVal = isMobile ? 0 : 0.4;
-    const blurVal = isMobile ? 0 : 2;
+    const itemDistanceVal = isMobile ? 180 : 210;
+    const itemStackDistVal = isMobile ? 10 : 13;
+    const itemScaleVal = isMobile ? 0.015 : 0.025;
+    const rotationVal = 0; // zero rotation ensures clean vertical alignment
+    const blurVal = 0; // zero blur eliminates GPU repaints & scroll vibration
     const baseScaleVal = isMobile ? 0.96 : 0.94;
 
     return (
-        <section id="projects" className="pt-20 sm:pt-28 pb-14 sm:pb-24 scroll-mt-24">
+        <section id="projects" className="pt-8 sm:pt-10 pb-4 sm:pb-6 scroll-mt-20">
             {/* 
-                Wider container width:
-                Uses max-w-[680px] sm:max-w-[720px] w-full mx-auto as requested ("palakihin mo ng kaunti ung width ng stack project border")
+                Editorial Container Width:
+                Uses max-w-[680px] sm:max-w-[720px] w-full mx-auto
             */}
             <div className="max-w-[680px] sm:max-w-[720px] mx-auto px-3.5 sm:px-6">
 
-                {/* Clean Header matching Image 2 */}
+                {/* Clean, Minimalist Header matching editorial design */}
                 <ScrollReveal>
-                    <div className="flex items-baseline justify-between mb-4 sm:mb-7">
+                    <div className="flex items-baseline justify-between mb-4 sm:mb-6">
                         <h2 className="font-serif text-[26px] sm:text-[34px] font-normal text-gray-900 dark:text-white tracking-tight">
                             Projects
                         </h2>
-
-                        {/* Subtle counter */}
                         <span className="font-mono text-[11px] font-medium text-gray-400 dark:text-gray-500">
                             {String(activeIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
                         </span>
@@ -206,13 +194,15 @@ export default function ProjectShowcase() {
 
                 {/* 
                     Continuous Window Scroll Stack:
-                    - useWindowScroll={true} ensures scrolling is 100% continuous all the way down to the footer!
-                    - The whole card border is visible before scrolling and during stacking!
+                    - Zero-vibration GPU-composited stack with hysteresis
+                    - Stacked cards are interactive: tap/click brings tucked card into focus
+                    - Minimal bottom margin for seamless flow into the next section
                 */}
                 <div className="relative w-full">
                     <ScrollStack
                         ref={stackRef}
                         useWindowScroll={true}
+                        innerClassName="pt-1 pb-1"
                         itemDistance={itemDistanceVal}
                         itemScale={itemScaleVal}
                         itemStackDistance={itemStackDistVal}
@@ -233,39 +223,6 @@ export default function ProjectShowcase() {
                             />
                         ))}
                     </ScrollStack>
-
-                    {/* 
-                        Bottom Right Chevron Button:
-                        Visible at bottom-right matching Image 2!
-                        Clicking advances to the next card or cycles to the top.
-                    */}
-                    <div className="sticky bottom-6 float-right z-30 pointer-events-auto pr-2 pb-2">
-                        <button
-                            onClick={handleNextClick}
-                            className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-gray-300 dark:border-white/15 bg-white/90 dark:bg-[#1c1c1c]/90 backdrop-blur-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95"
-                            title={isLastCard ? "Back to first project" : "Next project"}
-                            aria-label={isLastCard ? "Back to first project" : "Next project"}
-                        >
-                            {isLastCard ? (
-                                <ChevronUp size={16} />
-                            ) : (
-                                <ChevronDown size={16} />
-                            )}
-                        </button>
-                    </div>
-                </div>
-
-                {/* Bottom View All Link */}
-                <div className="mt-12 sm:mt-16 flex justify-center">
-                    <a
-                        href="https://github.com/Gianssen"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-[12px] font-semibold text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors no-underline"
-                    >
-                        <span>View all 25+ repositories on GitHub</span>
-                        <ArrowUpRight size={13} />
-                    </a>
                 </div>
 
             </div>

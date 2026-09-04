@@ -3,7 +3,7 @@ import { StaggerTestimonials } from '@/components/ui/stagger-testimonials';
 
 export default function TestimonialsSection() {
     return (
-        <section id="testimonials" className="py-12 sm:py-16 scroll-mt-20 overflow-hidden">
+        <section id="testimonials" className="py-8 sm:py-12 scroll-mt-20 overflow-hidden">
             <div className="max-w-[780px] mx-auto px-5 sm:px-8">
                 <ScrollReveal>
                     <div className="flex flex-col gap-1.5 mb-8">
